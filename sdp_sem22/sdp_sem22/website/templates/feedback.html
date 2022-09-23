@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block title %}feed back{% endblock %} 
+{% block content %}
+    <h1 align="center">feed backs</h1>
+    <ul class="list-group list-group-flush" id="feedback">
+      {% for fb in user.feedback %}
+      <li class="list-group-item">
+        {{fb.data}}
+        <button type="button" class="close" onClick="deletefeedback(feedback.id)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
+    <form action="/feedback" method="POST">
+      <textarea name="feedback" id="feedback" class="form-control"></textarea>
+      <br />
+      <div align="center">
+        <button type="submit" class="btn btn-primary">submit feedback</button>
+      </div>
+    </form>
+    {% endblock %}
+      
